@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-inter);
+  background: #FDFAF6;
+  color: #1A1410;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #DDD5CC; border-radius: 2px; }
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-black/[0.07] shadow-sm;
+  }
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm
+           bg-gradient-to-br from-[#FF8A73] to-[#9B84F7] text-white
+           shadow-lg shadow-coral/25 hover:opacity-90 active:scale-[0.98] transition-all;
+  }
+  .btn-secondary {
+    @apply flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-sm
+           border border-black/10 bg-white text-[#6B6259]
+           hover:bg-black/[0.03] active:scale-[0.98] transition-all;
+  }
+  .input {
+    @apply w-full rounded-xl border border-black/10 bg-[#F5F1EC] px-4 py-2.5 text-sm
+           placeholder-[#A89D94] outline-none focus:border-violet/60 focus:ring-2 focus:ring-violet/10
+           transition-all;
+  }
+  .label { @apply block text-xs font-semibold text-[#6B6259] mb-1.5 uppercase tracking-wide; }
+}
