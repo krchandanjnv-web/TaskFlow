@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "TaskFlow — Smart Task Management",
   description: "A beautiful, productive task manager with real-time sync.",
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth();
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider session={session}>
+        <SessionProvider>
           {children}
         </SessionProvider>
       </body>

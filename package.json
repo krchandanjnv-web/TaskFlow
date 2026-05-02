@@ -1,38 +1,24 @@
 {
   "name": "taskflow",
-  "version": "1.0.0",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "next": "14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "next-auth": "^5.0.0-beta.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
     "googleapis": "^144.0.0",
-    "swr": "^2.2.5",
     "bcryptjs": "^2.4.3",
-    "react-hook-form": "^7.52.1",
-    "zod": "^3.23.8",
-    "@hookform/resolvers": "^3.9.0",
-    "uuid": "^10.0.0"
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/uuid": "^10.0.0",
-    "typescript": "^5.5.3",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5",
-    "tailwindcss": "^3.4.6",
-    "postcss": "^8.4.40",
-    "autoprefixer": "^10.4.19"
+    "@vitejs/plugin-react": "^4.2.1",
+    "terser": "^5.46.2",
+    "vite": "^5.0.8"
   }
 }

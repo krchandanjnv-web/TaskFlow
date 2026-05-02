@@ -10,6 +10,9 @@ const credentialsSchema = z.object({
 });
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  secret:    process.env.NEXTAUTH_SECRET,
+  trustHost: true,
+
   providers: [
     Credentials({
       name: "Email & Password",
@@ -18,16 +21,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const parsed = credentialsSchema.safeParse(credentials);
-        if (!parsed.success) return null;
+        try {
+          const parsed = credentialsSchema.safeParse(credentials);
+          if (!parsed.success) return null;
 
-        const user = await findUserByEmail(parsed.data.email);
-        if (!user) return null;
+          const user = await findUserByEmail(parsed.data.email);
+          if (!user) return null;
 
-        const valid = await bcrypt.compare(parsed.data.password, user.passwordHash);
-        if (!valid) return null;
+          const valid = await bcrypt.compare(parsed.data.password, user.passwordHash);
+          if (!valid) return null;
 
-        return { id: user.id, email: user.email, name: user.name };
+          return { id: user.id, email: user.email, name: user.name };
+        } catch (err) {
+          console.error("[auth] authorize error:", err);
+          return null;
+        }
       },
     }),
   ],
@@ -36,7 +44,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.userId = user.id;
+      if (user?.id) token.userId = user.id;
       return token;
     },
     async session({ session, token }) {
@@ -49,6 +57,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login",
     error:  "/login",
   },
-
-  trustHost: true,
 });

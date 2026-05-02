@@ -1,0 +1,15 @@
+# Google Sheet Setup — TaskFlow
+# Sheet ID: 1bczB2CQHXCAXwCpXxSuh_6Rsw3Glo32fGPnBTidTI-M
+
+## Tab 1: users
+Row 1 headers (paste exactly in A1:E1):
+id | email | name | password_hash | created_at
+
+## Tab 2: tasks
+Row 1 headers (paste exactly in A1:J1):
+id | user_id | title | priority | category | type | recurrence | due_date | completed | created_at
+
+## IMPORTANT
+- Share the sheet with your service account email (Editor):
+  taskflow-sa@streaks-by-chandan.iam.gserviceaccount.com
+- Tab names must be exactly: users  and  tasks  (lowercase)
